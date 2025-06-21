@@ -123,12 +123,10 @@ export class KustomizeResources extends Chart {
         name: 'kustomization',
         namespace: 'default',
       },
-      spec: {
         resources: [
           HeadlampChart.CHART_NAME + '.k8s.yaml',
           NginxChart.CHART_NAME + '.k8s.yaml',
         ],
-      },
     });
   }
 }
