@@ -114,27 +114,27 @@ export class HeadlampChart extends Chart {
 }
 }
 
-export class KustomizeResources extends Chart {
-  constructor(scope: Construct, id: string, props: ChartProps = {}) {
-    super(scope, id, props);
+// export class KustomizeResources extends Chart {
+//   constructor(scope: Construct, id: string, props: ChartProps = {}) {
+//     super(scope, id, props);
 
-    new ApiObject(this, 'kustomization', {
-      apiVersion: 'kustomize.config.k8s.io/v1beta1',
-      kind: 'Kustomization',
-      metadata: {
-        name: 'kustomization',
-        namespace: 'default',
-      },
-        resources: [
-          HeadlampChart.CHART_NAME + '.k8s.yaml',
-          NginxChart.CHART_NAME + '.k8s.yaml',
-        ],
-    });
-  }
-}
+//     new ApiObject(this, 'kustomization', {
+//       apiVersion: 'kustomize.config.k8s.io/v1beta1',
+//       kind: 'Kustomization',
+//       metadata: {
+//         name: 'kustomization',
+//         namespace: 'default',
+//       },
+//         resources: [
+//           HeadlampChart.CHART_NAME + '.k8s.yaml',
+//           NginxChart.CHART_NAME + '.k8s.yaml',
+//         ],
+//     });
+//   }
+// }
 
 const app = new App();
 new NginxChart(app, 'nginx-deployment');
 new HeadlampChart(app, 'headlamp-deployment');
-new KustomizeResources(app, 'kustomization');
+// new KustomizeResources(app, 'kustomization');
 app.synth();
