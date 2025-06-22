@@ -90,11 +90,13 @@ export class HeadlampChart extends Chart {
         name: 'headlamp-service',
         namespace: 'default',
       },
-      selector: headlampLabels,
-      ports: [{
-        port: 80,
-        targetPort: 4466,
-      }],
+      spec: {
+        selector: headlampLabels,
+        ports: [{
+          port: 80,
+          targetPort: 4466,
+        }],
+      },
     });
 
     new ApiObject(this, 'headlamp-secret', {
@@ -134,5 +136,5 @@ export class KustomizeResources extends Chart {
 const app = new App();
 new NginxChart(app, 'nginx-deployment');
 new HeadlampChart(app, 'headlamp-deployment');
-new KustomizeResources(app, 'kustomize');
+new KustomizeResources(app, 'kustomization');
 app.synth();
