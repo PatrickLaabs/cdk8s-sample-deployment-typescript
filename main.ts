@@ -28,7 +28,7 @@ export class NginxChart extends Chart {
             containers: [
               {
                 name: 'nginx',
-                image: 'nginx:latest',
+                image: 'nginx:1.28',
                 ports: [{ containerPort: 80 }],
               },
             ],
